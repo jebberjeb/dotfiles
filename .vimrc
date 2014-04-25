@@ -1,10 +1,29 @@
-" ***** Pathogen *****
+" ***** Vundle *****
 set nocompatible
-call pathogen#infect()
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fireplace'
+Plugin 'emezeske/paredit.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'jebberjeb/vim-clojure-conceal'
+Plugin 'jebberjeb/yet-another-buffer-list'
+Plugin 'mileszs/ack.vim'
+Plugin 'taglist.vim'
+" TODO
+" Plugin kovisoft/slimv
+call vundle#end()
 
 " ***** General *****
-syntax on
 filetype plugin indent on
+syntax on
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 set nu
 
@@ -76,9 +95,8 @@ nnoremap nt :NERDTree<cr>
 nnoremap <leader>eval :%Eval<CR>
 nnoremap <leader>test :Eval (clojure.test/run-all-tests)<CR>
 
-" ***** Command-T *****
-let g:CommandTMaxFiles=50000
-let g:CommandTMaxDepth=20
+" ***** Ctrl-P *****
+nnoremap <leader>t :CtrlP<CR>
 
 " ***** Paredit *****
 let g:paredit_mode = 1

@@ -1,0 +1,3 @@
+.vim/bundle/**
+.vim/lib/**
+~.vim/bundle/vundle
