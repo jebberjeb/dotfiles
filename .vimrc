@@ -15,6 +15,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
+Plugin 'jebberjeb/vim-pivotal-tracker'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 " TODO
@@ -118,4 +119,9 @@ function! VSplitShell()
     :VimShell
 endfunction
 nnoremap <leader>sh :call VSplitShell()<cr>
+
+" ***** vim-pivotal-tracker *****
+let g:token = "<your pivotal tracker token>"
+let g:project_id = "366911"
+
 
