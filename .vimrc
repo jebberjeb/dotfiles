@@ -18,8 +18,7 @@ Plugin 'jebberjeb/yet-another-buffer-list'
 Plugin 'jebberjeb/vim-pivotal-tracker'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
-" TODO
-" Plugin kovisoft/slimv
+Plugin 'kovisoft/slimv'
 call vundle#end()
 
 " ***** General *****
@@ -124,4 +123,10 @@ nnoremap <leader>sh :call VSplitShell()<cr>
 let g:token = "<your pivotal tracker token>"
 let g:project_id = "366911"
 
+" ***** scratch *****
+function! Scratch()
+    :new
+    :e ~/.scrap.txt
+endfunction
+command! Scratch :call Scratch()
 

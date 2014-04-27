@@ -6,7 +6,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # stuff created by ruby-build install.sh
-export PATH=/usr/bin:$HOME/bin
+export PATH=/usr/bin:$HOME/bin:/bin
 export TERM=xterm-256color
 
 # .git-prompt
