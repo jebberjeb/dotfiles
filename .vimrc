@@ -103,7 +103,7 @@ let g:paredit_mode = 1
 " ***** Colors *****
 "colorscheme vividchalk
 let g:solarized_termcolors=256
-set background=dark
+set background=light
 colorscheme solarized
 
 set cc=80
