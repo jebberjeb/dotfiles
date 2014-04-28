@@ -31,7 +31,6 @@ set nu
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set background=dark
 set backspace+=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
@@ -102,7 +101,11 @@ nnoremap <leader>t :CtrlP<CR>
 let g:paredit_mode = 1
 
 " ***** Colors *****
-colorscheme vividchalk
+"colorscheme vividchalk
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+
 set cc=80
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
