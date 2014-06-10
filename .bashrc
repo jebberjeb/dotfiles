@@ -8,6 +8,7 @@ alias ll="ls -aFl"
 alias lein="/usr/local/bin/lein"
 alias tmux="TERM=screen-256color tmux"
 alias vim="TERM=screen-256color vim"
+alias startx="startxfce4"
 
 # Add git info to the prompt
 source ~/.git-prompt.sh
