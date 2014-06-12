@@ -5,7 +5,7 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
-export PATH=/usr/bin:$HOME/bin:/bin:/sbin
+export PATH=/usr/bin:$HOME/bin:/bin:/sbin:/usr/local/apache-maven-3.0.5/bin
 #export TERM=xterm-256color
 
 # .git-prompt
