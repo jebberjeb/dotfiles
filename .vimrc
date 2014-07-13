@@ -8,7 +8,7 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-fireplace'
-Plugin 'emezeske/paredit.vim'
+"Plugin 'emezeske/paredit.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'scrooloose/nerdtree'
@@ -103,7 +103,7 @@ let g:paredit_mode = 1
 " ***** Colors *****
 "colorscheme vividchalk
 let g:solarized_termcolors=256
-set background=light
+set background=dark
 colorscheme solarized
 
 set cc=80
