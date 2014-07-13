@@ -16,6 +16,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
 Plugin 'jebberjeb/vim-pivotal-tracker'
+Plugin 'jebberjeb/fireplace-fns'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 Plugin 'kovisoft/slimv'
@@ -24,7 +25,7 @@ call vundle#end()
 " ***** General *****
 filetype plugin indent on
 syntax on
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
+"autocmd Filetype html setlocal ts=2 sts=2 sw=2
 set nu
 
 " Whitespace Formatting
@@ -92,7 +93,6 @@ nnoremap nt :NERDTree<cr>
 
 " ***** Fireplace *****
 nnoremap <leader>eval :%Eval<CR>
-nnoremap <leader>test :Eval (clojure.test/run-all-tests)<CR>
 
 " ***** Ctrl-P *****
 nnoremap <leader>t :CtrlP<CR>
