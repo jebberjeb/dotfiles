@@ -16,3 +16,5 @@ export PATH=$PATH:~/idg/bin
 
 git config --global user.name "Jeb Beich"
 git config --global user.email jebbeich@gmail.com
+
+export EDITOR=vim
