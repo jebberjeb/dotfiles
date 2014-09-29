@@ -1,3 +1,2 @@
-.vim/bundle/**
-.vim/lib/**
-~.vim/bundle/vundle
+*.swp
+*.swo
