@@ -19,7 +19,7 @@ Plugin 'jebberjeb/vim-pivotal-tracker'
 Plugin 'jebberjeb/fireplace-fns'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
-Plugin 'kovisoft/slimv'
+"Plugin 'kovisoft/slimv'
 call vundle#end()
 
 " ***** General *****
