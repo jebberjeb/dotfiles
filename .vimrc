@@ -8,7 +8,7 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-fireplace'
-"Plugin 'emezeske/paredit.vim'
+Plugin 'emezeske/paredit.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'scrooloose/nerdtree'
@@ -87,6 +87,11 @@ nnoremap tn :tn<cr>
 nnoremap tp :tp<cr>
 nnoremap gtl :!/usr/bin/ctags --langmap=lisp:+.clj -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+" ***** Fugitive *****
+nnoremap gs :Gstatus<cr>
+nnoremap gc :Gcommit<cr>
+nnoremap gp :!git push<cr>
+
 " ***** NERDTree *****
 let NERDTreeShowHidden = 1
 nnoremap nt :NERDTree<cr>
@@ -133,3 +138,14 @@ function! Scratch()
 endfunction
 command! Scratch :call Scratch()
 
+" TODO - parameterize this function, use the root
+" directory and port for the project
+function! Work()
+    :norm ,shlein repl :connect 3101
+    :norm ,wh
+    :NERDTree
+    :norm ,wl
+    :e! project.clj
+    :vertical res +40
+    :Connect nrepl://localhost:3101 /home/pair/src/stapleslabs/Magrathea
+endfunction
