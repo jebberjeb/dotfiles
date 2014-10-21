@@ -1,5 +1,8 @@
 # .bashrc<cr>
 
+export HISTSIZE=100000
+export HISTTIMEFORMAT="%y-%m-%d %T "
+
 # User specific aliases and functions
 alias ll="ls -aFl"
 alias tmux="TERM=screen-256color tmux"
