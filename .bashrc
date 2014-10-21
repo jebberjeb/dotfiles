@@ -13,9 +13,15 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 
-source /etc/bashrc
-source ~/.bashrc-git
-source ~/.bashrc-path
+if [ -f /etc/bashrc ]; then
+    source /etc/bashrc
+fi
+if [ -f ~/.bashrc-git ]; then
+    source ~/.bashrc-git
+fi
+if [ -f ~/.bashrc-path ]; then
+    source ~/.bashrc-path
+fi
 
 set -o vi
 export EDITOR=vim
