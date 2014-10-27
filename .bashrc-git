@@ -2,7 +2,7 @@
 
 # Git prompt
 source ~/.git-prompt.sh
-export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+export PS1='[\D{%Y-%m-%d} \t \u@\h \w$(__git_ps1 " (%s)")]\n\$ '
 
 # Git config
 git config --global user.name "Jeb Beich"
