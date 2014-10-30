@@ -139,7 +139,9 @@ endfunction
 command! Scratch :call Scratch()
 
 " TODO - parameterize this function, use the root
-" directory and port for the project
+" directory and port for the project -- it should look
+" at the current/wokring directory and decided based
+" on that (not actually a parameter).
 function! Work()
     :norm ,shlein repl :connect 3101
     :norm ,wh
@@ -149,3 +151,8 @@ function! Work()
     :vertical res +40
     :Connect nrepl://localhost:3101 /home/pair/src/stapleslabs/Magrathea
 endfunction
+
+function! FormatJSON()
+    :%!python -m json.tool
+endfunction
+nnoremap =j :call FormatJSON()<CR>
