@@ -156,3 +156,4 @@ function! FormatJSON()
     :%!python -m json.tool
 endfunction
 nnoremap =j :call FormatJSON()<CR>
+command! FormatJSON call FormatJSON()
