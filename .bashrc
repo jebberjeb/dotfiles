@@ -12,6 +12,11 @@ alias startx="startxfce4"
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
+alias bx="BitchX"
+
+# irc
+export IRCNICK=jebberjeb
+export IRCSERVER=irc.freenode.net
 
 if [ -f /etc/bashrc ]; then
     source /etc/bashrc

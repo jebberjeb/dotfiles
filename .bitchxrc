@@ -1,0 +1,6 @@
+on connect "*freenode.net*" {
+    /msg nickserv identify $NICKSERV_PWD
+    /win new hide
+    /win next
+    /join #clojure
+}
