@@ -157,3 +157,8 @@ function! FormatJSON()
 endfunction
 nnoremap =j :call FormatJSON()<CR>
 command! FormatJSON call FormatJSON()
+
+" Send the selected text to pastebin.
+" TODO - automate putting the resulting uri on the clipboard.
+vnoremap <leader>pb <esc>:'<,'>:w !curl -F 'clbin=<-' https://clbin.com<CR>
+
