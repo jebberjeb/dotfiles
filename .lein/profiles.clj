@@ -1,5 +1,6 @@
 {:user {:plugins [[lein-immutant "1.2.0"]
-                  [lein-pprint "1.1.1"]]
+                  [lein-pprint   "1.1.1"]]
         :dependencies [[org.clojure/tools.namespace "0.2.7"]
-                       [ring-mock                   "0.1.5"]]
+                       [ring-mock                   "0.1.5"]
+                       [com.taoensso/timbre         "3.3.1"]]
         :ring {:nrepl {:start? true :port 50000}}}}
