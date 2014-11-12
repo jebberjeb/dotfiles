@@ -12,7 +12,14 @@ alias startx="startxfce4"
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
-alias bx="BitchX"
+
+function bx() {
+    if [[ -z $NICKSERV_PWD ]]; then
+        echo 'must set NICKSERV_PWD'
+    else
+        BitchX
+    fi
+}
 
 # irc
 export IRCNICK=jebberjeb
