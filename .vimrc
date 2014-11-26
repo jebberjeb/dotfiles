@@ -54,6 +54,8 @@ nnoremap <leader>wh <c-w>h<cr>
 nnoremap <leader>wj <c-w>j<cr>
 nnoremap <leader>wk <c-w>k<cr>
 nnoremap <leader>wl <c-w>l<cr>
+nnoremap - <c-u>
+nnoremap + <c-d>
 
 " Buffer Sizing
 noremap <left> :vertical res -1<cr>
