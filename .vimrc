@@ -17,6 +17,7 @@ Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
 Plugin 'jebberjeb/vim-pivotal-tracker'
 Plugin 'jebberjeb/vim-clj-kit'
+Plugin 'jebberjeb/grimoire.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 "Plugin 'kovisoft/slimv'
@@ -116,6 +117,8 @@ colorscheme solarized
 set cc=80
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
+set hls
+
 " ***** VimScript *****
 " Eval the current buffer
 nnoremap <leader>run :w<cr> :so %<cr>
@@ -164,3 +167,13 @@ command! FormatJSON call FormatJSON()
 " TODO - automate putting the resulting uri on the clipboard.
 vnoremap <leader>pb <esc>:'<,'>:w !curl -F 'clbin=<-' https://clbin.com<CR>
 
+" Connect to local nrepl a tad more easily
+command! -nargs=1 C Connect nrepl://localhost:<args>
+" Specially for current work
+command! -nargs=0 CC Connect nrepl://localhost:3101
+
+:nnoremap <leader>mzf :mzf %<cr>
+
+:nnoremap <leader>grim :Grim<cr>
+
+:echo "Practice with :marks, m<a-z>, `<a-z> or '<a-z>"
