@@ -176,4 +176,8 @@ command! -nargs=0 CC Connect nrepl://localhost:3101
 
 :nnoremap <leader>grim :Grim<cr>
 
-:echo "Practice with :marks, m<a-z>, `<a-z> or '<a-z>"
+:echo "\nREMINDERS\n
+    \===\n
+    \ * Practice with :marks, m<a-z>, `<a-z> or '<a-z>\n
+    \ * Practice with `` or '' to jump back, ex: *``\n
+    \===\n"
