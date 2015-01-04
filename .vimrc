@@ -55,8 +55,8 @@ nnoremap <leader>wh <c-w>h<cr>
 nnoremap <leader>wj <c-w>j<cr>
 nnoremap <leader>wk <c-w>k<cr>
 nnoremap <leader>wl <c-w>l<cr>
-nnoremap - <c-u>
-nnoremap + <c-d>
+nnoremap + <c-u>
+nnoremap - <c-d>
 
 " Buffer Sizing
 noremap <left> :vertical res -1<cr>
@@ -136,13 +136,6 @@ nnoremap <leader>sh :call VSplitShell()<cr>
 let g:token = "<your pivotal tracker token>"
 let g:project_id = "366911"
 
-" ***** scratch *****
-function! Scratch()
-    :new
-    :e ~/.scrap.txt
-endfunction
-command! Scratch :call Scratch()
-
 " TODO - parameterize this function, use the root
 " directory and port for the project -- it should look
 " at the current/wokring directory and decided based
@@ -164,7 +157,8 @@ nnoremap =j :call FormatJSON()<CR>
 command! FormatJSON call FormatJSON()
 
 " Send the selected text to pastebin.
-" TODO - automate putting the resulting uri on the clipboard.
+" TODO - automate putting the resulting uri on the clipboard, or
+" at least opening it in a browser.
 vnoremap <leader>pb <esc>:'<,'>:w !curl -F 'clbin=<-' https://clbin.com<CR>
 
 " Connect to local nrepl a tad more easily
@@ -172,12 +166,41 @@ command! -nargs=1 C Connect nrepl://localhost:<args>
 " Specially for current work
 command! -nargs=0 CC Connect nrepl://localhost:3101
 
-:nnoremap <leader>mzf :mzf %<cr>
+nnoremap <leader>mzf :mzf %<cr>
 
-:nnoremap <leader>grim :Grim<cr>
+nnoremap <leader>grim :Grim<cr>
 
-:echo "\nREMINDERS\n
-    \===\n
-    \ * Practice with :marks, m<a-z>, `<a-z> or '<a-z>\n
-    \ * Practice with `` or '' to jump back, ex: *``\n
-    \===\n"
+" ***** Reminders *****
+function! ShowReminders()
+    new
+    e ~/source/scripts/reminders
+    nnoremap <buffer> q :w<cr>:bd<cr>
+endfunction
+command! Reminders call ShowReminders()
+command! ShowReminders call ShowReminders()
+echo system('cat ~/source/scripts/reminders')
+
+" ***** Clojure Eastwood (linter) *****
+let g:eastwood_url_base = "https://github.com/jonase/eastwood#"
+
+function! EastwoodRun()
+    !lein eastwood '{:out "warn.txt"}'
+    cgetfile warn.txt
+    copen 7
+endfunction
+
+function! EastwoodHelp()
+    let part = split(split(getline('.'), '|')[2], ':')[0]
+    let trimmed = substitute(part,"^\\s\\+\\|\\s\\+$","","g")
+    new
+    execute "norm i" . g:eastwood_url_base . trimmed
+    norm 0gx
+    bd!
+endfunction
+
+command! EW call EastwoodRun()
+autocmd BufReadPost quickfix nnoremap <buffer> H :echo EastwoodHelp()<cr>
+
+" ***** Quickfix *****
+nnoremap <leader>qfn :cn<cr>
+nnoremap <leader>qfp :cp<cr>
