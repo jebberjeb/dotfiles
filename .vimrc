@@ -18,6 +18,7 @@ Plugin 'jebberjeb/yet-another-buffer-list'
 Plugin 'jebberjeb/vim-pivotal-tracker'
 Plugin 'jebberjeb/vim-clj-kit'
 Plugin 'jebberjeb/grimoire.vim'
+Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 "Plugin 'kovisoft/slimv'
@@ -179,27 +180,6 @@ endfunction
 command! Reminders call ShowReminders()
 command! ShowReminders call ShowReminders()
 echo system('cat ~/source/scripts/reminders')
-
-" ***** Clojure Eastwood (linter) *****
-let g:eastwood_url_base = "https://github.com/jonase/eastwood#"
-
-function! EastwoodRun()
-    !lein eastwood '{:out "warn.txt"}'
-    cgetfile warn.txt
-    copen 7
-endfunction
-
-function! EastwoodHelp()
-    let part = split(split(getline('.'), '|')[2], ':')[0]
-    let trimmed = substitute(part,"^\\s\\+\\|\\s\\+$","","g")
-    new
-    execute "norm i" . g:eastwood_url_base . trimmed
-    norm 0gx
-    bd!
-endfunction
-
-command! EW call EastwoodRun()
-autocmd BufReadPost quickfix nnoremap <buffer> H :echo EastwoodHelp()<cr>
 
 " ***** Quickfix *****
 nnoremap <leader>qfn :cn<cr>
