@@ -157,6 +157,27 @@ function! Work()
     :Connect nrepl://localhost:3101 /home/pair/src/stapleslabs/Magrathea
 endfunction
 
+function! LoadUtilNamespaces()
+    let code =
+        \ "(require '[clojure.pprint :refer :all] \n" .
+        \ "'[clojure.test :refer :all] \n" .
+        \ "'[clojure.repl :refer :all] \n" .
+        \ "'[clojure.java.io :as io] \n" .
+        \ "'[ring.mock.request :refer (request)] \n" .
+        \ "'[clojure.java.shell :refer (sh)] \n" .
+        \ "'[clojure.tools.namespace.repl :refer (refresh)])"
+    call fireplace#eval(code)
+    echo "fireplace#eval() " . code
+endfunction
+nnoremap <leader>ns :call LoadUtilNamespaces()<cr>
+
+" TODO - finish porting this
+"(defmacro ls-ns
+"  [n]
+"  `(-> '~n ns-publics keys sort pprint))
+
+nnoremap <leader>testa :call FooRunTests()<cr>
+
 " ***** +mzscheme *****
 nnoremap <leader>mzf :mzf %<cr>
 
