@@ -29,8 +29,10 @@ filetype plugin indent on
 syntax on
 "autocmd Filetype html setlocal ts=2 sts=2 sw=2
 set nu
+let mapleader = ","
+inoremap jk <Esc>
 
-" Whitespace Formatting
+" ***** Whitespace formatting *****
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -38,19 +40,11 @@ set backspace+=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
 
-" Basic Mappings
-let mapleader = ","
-inoremap jk <Esc>
-
-" Edit/Source .vimrc
+" ***** .vimrc *****
 noremap <leader>dot :vsplit ~/.vimrc<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 nnoremap <leader>sdot :source ~/.vimrc<cr>
 
-" Moving Text Around
-nnoremap <leader>lu :normal ddkkp<cr>
-nnoremap <leader>ld :normal ddp<cr>
-
-" Buffer Navigation
+" ***** Buffer navigation *****
 nnoremap <leader>wq :q<cr>
 nnoremap <leader>wh <c-w>h<cr>
 nnoremap <leader>wj <c-w>j<cr>
@@ -59,17 +53,17 @@ nnoremap <leader>wl <c-w>l<cr>
 nnoremap + <c-u>
 nnoremap - <c-d>
 
-" Buffer Sizing
+" ***** Buffer sizing *****
 noremap <left> :vertical res -1<cr>
 nnoremap <right> :vertical res +1<cr>
 nnoremap <down> :res -1<cr>
 nnoremap <up> :res +1<cr>
 
-" Unmap
+" ***** Unmap *****
 inoremap <esc> <nop>
 inoremap <c-[> <nop>
 
-" Add/Remove Formatting (for copy/paste)
+" ***** Copy/paste *****
 function! ReadyToCopy()
     :set cc=0
     :set nonumber
@@ -100,9 +94,6 @@ nnoremap gp :!git push<cr>
 let NERDTreeShowHidden = 1
 nnoremap nt :NERDTree<cr>
 
-" ***** Fireplace *****
-nnoremap <leader>eval :%Eval<CR>
-
 " ***** Ctrl-P *****
 nnoremap <leader>t :CtrlP<CR>
 
@@ -122,7 +113,7 @@ set hls
 
 " ***** VimScript *****
 " Eval the current buffer
-nnoremap <leader>run :w<cr> :so %<cr>
+nnoremap <leader>so :w<cr> :so %<cr>
 
 " ***** VimShell *****
 function! VSplitShell()
@@ -133,9 +124,24 @@ function! VSplitShell()
 endfunction
 nnoremap <leader>sh :call VSplitShell()<cr>
 
-" ***** vim-pivotal-tracker *****
+" ***** Vim-pivotal-tracker *****
 let g:token = "<your pivotal tracker token>"
 let g:project_id = "366911"
+
+function! FormatJSON()
+    :%!python -m json.tool
+endfunction
+nnoremap =j :call FormatJSON()<CR>
+command! FormatJSON call FormatJSON()
+
+" Send the selected text to pastebin.
+" TODO - automate putting the resulting uri on the clipboard, or
+" at least opening it in a browser.
+vnoremap <leader>pb <esc>:'<,'>:w !curl -F 'clbin=<-' https://clbin.com<CR>
+
+" ***** Clojure *****
+command! -nargs=1 C Connect nrepl://localhost:<args>
+nnoremap <leader>eval :%Eval<CR>
 
 " TODO - parameterize this function, use the root
 " directory and port for the project -- it should look
@@ -151,24 +157,10 @@ function! Work()
     :Connect nrepl://localhost:3101 /home/pair/src/stapleslabs/Magrathea
 endfunction
 
-function! FormatJSON()
-    :%!python -m json.tool
-endfunction
-nnoremap =j :call FormatJSON()<CR>
-command! FormatJSON call FormatJSON()
-
-" Send the selected text to pastebin.
-" TODO - automate putting the resulting uri on the clipboard, or
-" at least opening it in a browser.
-vnoremap <leader>pb <esc>:'<,'>:w !curl -F 'clbin=<-' https://clbin.com<CR>
-
-" Connect to local nrepl a tad more easily
-command! -nargs=1 C Connect nrepl://localhost:<args>
-" Specially for current work
-command! -nargs=0 CC Connect nrepl://localhost:3101
-
+" ***** +mzscheme *****
 nnoremap <leader>mzf :mzf %<cr>
 
+" ***** Grimoire *****
 nnoremap <leader>grim :Grim<cr>
 
 " ***** Reminders *****
