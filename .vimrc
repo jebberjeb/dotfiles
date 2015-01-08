@@ -172,11 +172,6 @@ function! LoadUtilNamespaces()
 endfunction
 nnoremap <leader>ns :call LoadUtilNamespaces()<cr>
 
-" TODO - finish porting this
-"(defmacro ls-ns
-"  [n]
-"  `(-> '~n ns-publics keys sort pprint))
-
 nnoremap <leader>testa :call FooRunTests()<cr>
 
 " ***** +mzscheme *****
