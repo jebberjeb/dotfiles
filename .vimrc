@@ -159,13 +159,14 @@ endfunction
 
 function! LoadUtilNamespaces()
     let code =
-        \ "(require '[clojure.pprint :refer :all] \n" .
-        \ "'[clojure.test :refer :all] \n" .
-        \ "'[clojure.repl :refer :all] \n" .
-        \ "'[clojure.java.io :as io] \n" .
-        \ "'[ring.mock.request :refer (request)] \n" .
-        \ "'[clojure.java.shell :refer (sh)] \n" .
-        \ "'[clojure.tools.namespace.repl :refer (refresh)])"
+        \ "(do (require '[clojure.pprint :refer :all] \n" .
+        \ "             '[clojure.test :refer :all] \n" .
+        \ "             '[clojure.repl :refer :all] \n" .
+        \ "             '[clojure.java.io :as io] \n" .
+        \ "             '[ring.mock.request :refer (request)] \n" .
+        \ "             '[clojure.java.shell :refer (sh)] \n" .
+        \ "             '[clojure.tools.namespace.repl :refer (refresh)]) \n" .
+        \ "    (defmacro ls-ns [n] `(-> '~n ns-publics keys sort pprint)))"
     call fireplace#eval(code)
     echo "fireplace#eval() " . code
 endfunction
