@@ -124,6 +124,14 @@ function! VSplitShell()
 endfunction
 nnoremap <leader>sh :call VSplitShell()<cr>
 
+let g:vogon_root = "/home/pair/work/stapleslabs/Vogon"
+function! PsqlVimShell(env)
+    exec ':!' . g:vogon_root . '/bin/rs-env ' . a:env . ' current'
+    "Don't split -- handle the split ourselves.
+    exec ':VimShellInteractive --split="" "' . g:vogon_root . '/bin/psql"'
+endfunction
+command! -nargs=1 Psql :call PsqlVimShell("<args>")
+
 " ***** Vim-pivotal-tracker *****
 let g:token = "<your pivotal tracker token>"
 let g:project_id = "366911"
