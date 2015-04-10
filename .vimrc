@@ -96,6 +96,7 @@ nnoremap nt :NERDTree<cr>
 
 " ***** Ctrl-P *****
 nnoremap <leader>t :CtrlP<CR>
+let g:ctrlp_show_hidden = 1
 
 " ***** Paredit *****
 let g:paredit_mode = 1
@@ -201,3 +202,5 @@ echo system('cat ~/source/scripts/reminders')
 " ***** Quickfix *****
 nnoremap <leader>qfn :cn<cr>
 nnoremap <leader>qfp :cp<cr>
+nnoremap <leader>qfo :copen<cr>
+nnoremap <leader>qfc :ccl<cr>
