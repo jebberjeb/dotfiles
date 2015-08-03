@@ -7,7 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
 "Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-fireplace'
+Plugin 'jebberjeb/vim-fireplace'
 Plugin 'emezeske/paredit.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -209,5 +209,5 @@ nnoremap <leader>qfc :cclose<cr>
 nnoremap <leader>ln :lnext<cr>
 nnoremap <leader>lp :lprevious<cr>
 nnoremap <leader>lo :lopen<cr>
-nnoremap <leader>lc :cclose<cr>
+nnoremap <leader>lc :lclose<cr>
 
