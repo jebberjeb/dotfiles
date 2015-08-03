@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-classpath'
+"Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-fireplace'
 Plugin 'emezeske/paredit.vim'
@@ -200,7 +200,14 @@ command! ShowReminders call ShowReminders()
 echo system('cat ~/source/scripts/reminders')
 
 " ***** Quickfix *****
-nnoremap <leader>qfn :cn<cr>
-nnoremap <leader>qfp :cp<cr>
+nnoremap <leader>qfn :cnext<cr>
+nnoremap <leader>qfp :cprevious<cr>
 nnoremap <leader>qfo :copen<cr>
-nnoremap <leader>qfc :ccl<cr>
+nnoremap <leader>qfc :cclose<cr>
+
+" ***** Location *****
+nnoremap <leader>ln :lnext<cr>
+nnoremap <leader>lp :lprevious<cr>
+nnoremap <leader>lo :lopen<cr>
+nnoremap <leader>lc :cclose<cr>
+
