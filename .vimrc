@@ -26,6 +26,7 @@ call vundle#end()
 
 " ***** General *****
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 syntax on
 "autocmd Filetype html setlocal ts=2 sts=2 sw=2
 set nu
