@@ -16,11 +16,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
 Plugin 'jebberjeb/vim-pivotal-tracker'
-Plugin 'jebberjeb/vim-clj-kit'
 Plugin 'jebberjeb/grimoire.vim'
 Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
+Plugin 'jceb/vim-orgmode'
 "Plugin 'kovisoft/slimv'
 call vundle#end()
 
