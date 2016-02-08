@@ -7,7 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
 "Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
-Plugin 'jebberjeb/vim-fireplace'
+Plugin 'tpope/vim-fireplace'
 Plugin 'emezeske/paredit.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -69,6 +69,7 @@ function! ReadyToCopy()
     :set cc=0
     :set nonumber
     :set nolist
+    :set mouse=""
 endfunction
 function! NotReadyToCopy()
     :set cc=80
@@ -101,6 +102,9 @@ let g:ctrlp_show_hidden = 1
 
 " ***** Paredit *****
 let g:paredit_mode = 1
+" TODO - define filetypes?
+au FileType edn call PareditInitBuffer()
+au FileType cljc call PareditInitBuffer()
 
 " ***** Colors *****
 "colorscheme vividchalk
@@ -212,3 +216,4 @@ nnoremap <leader>lp :lprevious<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lc :lclose<cr>
 
+" ***** vim-orgmode *****
