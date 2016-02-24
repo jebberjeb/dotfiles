@@ -42,9 +42,10 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
 
 " ***** .vimrc *****
+" TODO - reuse here
 noremap <leader>dot :vsplit ~/.vimrc<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+noremap <leader>cheat :vsplit ~/source/scratch/cheatsheet/vim.org<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 nnoremap <leader>sdot :source ~/.vimrc<cr>
-
 " ***** Buffer navigation *****
 nnoremap <leader>wq :q<cr>
 nnoremap <leader>wh <c-w>h<cr>
@@ -192,7 +193,7 @@ nnoremap <leader>testa :call FooRunTests()<cr>
 nnoremap <leader>mzf :mzf %<cr>
 
 " ***** Grimoire *****
-nnoremap <leader>grim :Grim<cr>
+nnoremap <leader>grim :GrimBrowse<cr>
 
 " ***** Reminders *****
 function! ShowReminders()
