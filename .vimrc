@@ -44,7 +44,7 @@ set list
 " ***** .vimrc *****
 " TODO - reuse here
 noremap <leader>dot :vsplit ~/.vimrc<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
-noremap <leader>cheat :vsplit ~/source/scratch/cheatsheet/vim.org<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+noremap <leader>cheat :vsplit ~/source/scratch/cheatsheet/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 nnoremap <leader>sdot :source ~/.vimrc<cr>
 " ***** Buffer navigation *****
 nnoremap <leader>wq :q<cr>
