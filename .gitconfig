@@ -1,6 +1,6 @@
 [user]
-    email = jebbeich@gmail.com
-    name = Jeb Beich
+	email = jebbeich@gmail.com
+	name = Jeb Beich
 [github]
     user = jebberjeb
 [push]
@@ -9,3 +9,17 @@
     helper = cache --timeout=36000
 [core]
     excludesfile = ~/.gitignore
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    dc = diff --cached
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    # Show files ignored by git:
+    ign = ls-files -o -i --exclude-standard
+    fpl = push --force-with-lease
