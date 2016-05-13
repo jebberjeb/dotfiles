@@ -32,6 +32,8 @@ syntax on
 set nu
 let mapleader = ","
 inoremap jk <Esc>
+set statusline=%-.50f\ \ %l/%L\ \ %y
+set ruler
 
 " ***** Whitespace formatting *****
 set tabstop=4
@@ -56,10 +58,15 @@ nnoremap + <c-u>
 nnoremap - <c-d>
 
 " ***** Buffer sizing *****
-noremap <left> :vertical res -1<cr>
+nnoremap <left> :vertical res -1<cr>
 nnoremap <right> :vertical res +1<cr>
 nnoremap <down> :res -1<cr>
 nnoremap <up> :res +1<cr>
+
+" ***** Movement *****
+" 'sl' stands for scroll lock
+nnoremap <leader>slon :set so=100<cr>
+nnoremap <leader>sloff :set so=0<cr>
 
 " ***** Unmap *****
 inoremap <esc> <nop>
