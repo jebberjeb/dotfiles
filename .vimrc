@@ -21,6 +21,7 @@ Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 Plugin 'jceb/vim-orgmode'
+Plugin 'vimoutliner/vimoutliner'
 "Plugin 'kovisoft/slimv'
 call vundle#end()
 
@@ -31,6 +32,7 @@ syntax on
 "autocmd Filetype html setlocal ts=2 sts=2 sw=2
 set nu
 let mapleader = ","
+let maplocalleader = ",,"
 inoremap jk <Esc>
 set statusline=%-.50f\ \ %l/%L\ \ %y
 set ruler
@@ -47,6 +49,7 @@ set list
 " TODO - reuse here
 noremap <leader>dot :vsplit ~/.vimrc<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 noremap <leader>cheat :vsplit ~/source/scratch/cheatsheet/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+noremap <leader>log :vsplit ~/source/scratch/logbook/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 nnoremap <leader>sdot :source ~/.vimrc<cr>
 " ***** Buffer navigation *****
 nnoremap <leader>wq :q<cr>
