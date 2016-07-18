@@ -20,7 +20,6 @@ Plugin 'jebberjeb/grimoire.vim'
 Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
-Plugin 'jceb/vim-orgmode'
 Plugin 'vimoutliner/vimoutliner'
 "Plugin 'kovisoft/slimv'
 call vundle#end()
@@ -50,6 +49,8 @@ set list
 noremap <leader>dot :vsplit ~/.vimrc<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 noremap <leader>cheat :vsplit ~/source/scratch/cheatsheet/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 noremap <leader>log :vsplit ~/source/scratch/logbook/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+noremap <leader>todo :vsplit TODO<cr>:set ft=votl<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+
 nnoremap <leader>sdot :source ~/.vimrc<cr>
 " ***** Buffer navigation *****
 nnoremap <leader>wq :q<cr>
@@ -226,5 +227,3 @@ nnoremap <leader>ln :lnext<cr>
 nnoremap <leader>lp :lprevious<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lc :lclose<cr>
-
-" ***** vim-orgmode *****
