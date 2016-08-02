@@ -49,7 +49,7 @@ set list
 noremap <leader>dot :vsplit ~/.vimrc<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 noremap <leader>cheat :vsplit ~/source/scratch/cheatsheet/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 noremap <leader>log :vsplit ~/source/scratch/logbook/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
-noremap <leader>todo :vsplit TODO<cr>:set ft=votl<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+noremap <leader>todo :split TODO<cr>:set ft=votl<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 
 nnoremap <leader>sdot :source ~/.vimrc<cr>
 " ***** Buffer navigation *****
