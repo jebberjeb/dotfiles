@@ -7,7 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
 "Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-fireplace'
+"Plugin 'tpope/vim-fireplace'
 Plugin 'emezeske/paredit.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -22,6 +22,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 Plugin 'vimoutliner/vimoutliner'
 "Plugin 'kovisoft/slimv'
+Plugin 'jebberjeb/neovim-client', {'rtp': 'socket-repl-plugin/'}
 call vundle#end()
 
 " ***** General *****
@@ -227,3 +228,15 @@ nnoremap <leader>ln :lnext<cr>
 nnoremap <leader>lp :lprevious<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lc :lclose<cr>
+
+" ***** Socket Repl Plugin *****
+nnoremap <leader>eb :EvalBuffer<cr>
+nnoremap <leader>ef :EvalCode<cr>
+
+function! ShowLog()
+    vnew
+    :ReplLog
+    norm 
+    norm 
+endfunction
+nnoremap <leader>log :call ShowLog()<cr>
