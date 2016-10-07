@@ -21,6 +21,7 @@ Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 Plugin 'vimoutliner/vimoutliner'
+Plugin 'aklt/plantuml-syntax'
 "Plugin 'kovisoft/slimv'
 Plugin 'jebberjeb/neovim-client', {'rtp': 'socket-repl-plugin/'}
 call vundle#end()
@@ -199,7 +200,9 @@ function! LoadUtilNamespaces()
 endfunction
 nnoremap <leader>ns :call LoadUtilNamespaces()<cr>
 
-nnoremap <leader>testa :call FooRunTests()<cr>
+" TODO - make this import, work for cljs/clj properly.
+nnoremap <leader>uuid :Eval (datascript.core/squuid)<cr>
+
 
 " ***** +mzscheme *****
 nnoremap <leader>mzf :mzf %<cr>
@@ -240,3 +243,8 @@ function! ShowLog()
     norm 
 endfunction
 nnoremap <leader>log :call ShowLog()<cr>
+
+" ***** PlantUML *****
+nnoremap <leader><leader>p :w<CR> :silent make<CR>
+
+
