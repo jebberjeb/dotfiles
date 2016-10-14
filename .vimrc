@@ -7,7 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
 "Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-fireplace'
+"Plugin 'tpope/vim-fireplace'
 Plugin 'emezeske/paredit.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -23,7 +23,7 @@ Plugin 'taglist.vim'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'aklt/plantuml-syntax'
 "Plugin 'kovisoft/slimv'
-Plugin 'file:///home/jeb/source/neovim-client', {'rtp': 'socket-repl-plugin/'}
+Plugin 'jebberjeb/neovim-client', {'rtp': 'socket-repl-plugin/'}
 call vundle#end()
 
 " ***** General *****
@@ -232,11 +232,19 @@ nnoremap <leader>lp :lprevious<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lc :lclose<cr>
 
+" ***** Socket Repl Plugin *****
+nnoremap <leader>eb :EvalBuffer<cr>
+nnoremap <leader>ef :EvalCode<cr>
+
+function! ShowLog()
+    vnew
+    :ReplLog
+    norm 
+    norm 
+endfunction
+nnoremap <leader>log :call ShowLog()<cr>
+
 " ***** PlantUML *****
 nnoremap <leader><leader>p :w<CR> :silent make<CR>
 
-" ***** Experimental socket repl plugin *****
-" Eval the whole buffer
-nnoremap <leader>eb :EvalBuffer<cr>
-" Eval a form
-nnoremap <leader>ef :EvalCode<cr>
+
