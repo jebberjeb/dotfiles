@@ -232,19 +232,6 @@ nnoremap <leader>lp :lprevious<cr>
 nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lc :lclose<cr>
 
-" ***** Socket Repl Plugin *****
-nnoremap <leader>eb :EvalBuffer<cr>
-nnoremap <leader>ef :EvalCode<cr>
-
-function! ShowLog()
-    vnew
-    :ReplLog
-    norm 
-    norm 
-endfunction
-nnoremap <leader>log :call ShowLog()<cr>
-
 " ***** PlantUML *****
 nnoremap <leader><leader>p :w<CR> :silent make<CR>
-
 
