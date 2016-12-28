@@ -15,7 +15,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
-Plugin 'jebberjeb/vim-pivotal-tracker'
+"Plugin 'jebberjeb/vim-pivotal-tracker'
 Plugin 'jebberjeb/grimoire.vim'
 Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
@@ -23,7 +23,7 @@ Plugin 'taglist.vim'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'aklt/plantuml-syntax'
 "Plugin 'kovisoft/slimv'
-Plugin 'jebberjeb/neovim-client', {'rtp': 'socket-repl-plugin/'}
+Plugin 'jebberjeb/clojure-socketrepl.nvim'
 call vundle#end()
 
 " ***** General *****
@@ -144,18 +144,6 @@ function! VSplitShell()
 endfunction
 nnoremap <leader>sh :call VSplitShell()<cr>
 
-let g:vogon_root = "/home/pair/work/stapleslabs/Vogon"
-function! PsqlVimShell(env)
-    exec ':!' . g:vogon_root . '/bin/rs-env ' . a:env . ' current'
-    "Don't split -- handle the split ourselves.
-    exec ':VimShellInteractive --split="" "' . g:vogon_root . '/bin/psql"'
-endfunction
-command! -nargs=1 Psql :call PsqlVimShell("<args>")
-
-" ***** Vim-pivotal-tracker *****
-let g:token = "<your pivotal tracker token>"
-let g:project_id = "366911"
-
 function! FormatJSON()
     :%!python -m json.tool
 endfunction
@@ -171,54 +159,14 @@ vnoremap <leader>pb <esc>:'<,'>:w !curl -F 'clbin=<-' https://clbin.com<CR>
 command! -nargs=1 C Connect nrepl://localhost:<args>
 nnoremap <leader>eval :%Eval<CR>
 
-" TODO - parameterize this function, use the root
-" directory and port for the project -- it should look
-" at the current/wokring directory and decided based
-" on that (not actually a parameter).
-function! Work()
-    :norm ,shlein repl :connect 3101
-    :norm ,wh
-    :NERDTree
-    :norm ,wl
-    :e! project.clj
-    :vertical res +40
-    :Connect nrepl://localhost:3101 /home/pair/src/stapleslabs/Magrathea
-endfunction
-
-function! LoadUtilNamespaces()
-    let code =
-        \ "(do (require '[clojure.pprint :refer :all] \n" .
-        \ "             '[clojure.test :refer :all] \n" .
-        \ "             '[clojure.repl :refer :all] \n" .
-        \ "             '[clojure.java.io :as io] \n" .
-        \ "             '[ring.mock.request :refer (request)] \n" .
-        \ "             '[clojure.java.shell :refer (sh)] \n" .
-        \ "             '[clojure.tools.namespace.repl :refer (refresh)]) \n" .
-        \ "    (defmacro ls-ns [n] `(-> '~n ns-publics keys sort pprint)))"
-    call fireplace#eval(code)
-    echo "fireplace#eval() " . code
-endfunction
-nnoremap <leader>ns :call LoadUtilNamespaces()<cr>
-
 " TODO - make this import, work for cljs/clj properly.
 nnoremap <leader>uuid :Eval (datascript.core/squuid)<cr>
-
 
 " ***** +mzscheme *****
 nnoremap <leader>mzf :mzf %<cr>
 
 " ***** Grimoire *****
 nnoremap <leader>grim :GrimBrowse<cr>
-
-" ***** Reminders *****
-function! ShowReminders()
-    new
-    e ~/source/scripts/reminders
-    nnoremap <buffer> q :w<cr>:bd<cr>
-endfunction
-command! Reminders call ShowReminders()
-command! ShowReminders call ShowReminders()
-echo system('cat ~/source/scripts/reminders')
 
 " ***** Quickfix *****
 nnoremap <leader>qfn :cnext<cr>
