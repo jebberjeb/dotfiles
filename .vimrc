@@ -26,6 +26,9 @@ Plugin 'aklt/plantuml-syntax'
 Plugin 'jebberjeb/clojure-socketrepl.nvim'
 call vundle#end()
 
+" ***** Testing Sample Plugin *****
+"set runtimepath^=~/.vim/bundle/sample-plugin
+
 " ***** General *****
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -181,5 +184,6 @@ nnoremap <leader>lo :lopen<cr>
 nnoremap <leader>lc :lclose<cr>
 
 " ***** PlantUML *****
-nnoremap <leader><leader>p :w<CR> :silent make<CR>
-
+"nnoremap <leader><leader>p :w<CR> :silent make<CR>
+nnoremap <leader>pl :w<CR> :!~/source/scripts/plantuml "%:p" -o /tmp/plant.png<CR>
+nnoremap <leader>plo :silent !feh /tmp/plant.png &<CR>
