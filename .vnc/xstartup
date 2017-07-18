@@ -1,12 +1,23 @@
-#!/bin/sh
+#!/bin/bash
 
-[ -r /etc/sysconfig/i18n ] && . /etc/sysconfig/i18n
-export LANG
-export SYSFONT
-startxfce4 &
-vncconfig -iconic &
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
+# This seems to work well when xfce is *not* already running on the machine
+# So log out if needed.
+#
+# Also, for this issue of either
+# * unable to contact settings server
+# * session manager already running
+# env -u SESSION_MANAGER -u DBUS_SESSION_BUS_ADDRESS vncserver
+# It also works for startx, w/ those same issues
+#
+# To specify screen resolution, add -geometry 1280 x 1440 to the above
+# command line. While we've set the geometry with x-terminal-emulator, we
+# still have to set the geometry of vncserver.
+#
+exec /bin/bash /etc/xdg/xfce4/xinitrc
+
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 xsetroot -solid grey
-xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+vncconfig -iconic &
+x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+x-window-manager &
