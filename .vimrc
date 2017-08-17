@@ -187,3 +187,19 @@ nnoremap <leader>lc :lclose<cr>
 "nnoremap <leader><leader>p :w<CR> :silent make<CR>
 nnoremap <leader>pl :w<CR> :!~/source/scripts/plantuml "%:p" -o /tmp/plant.png<CR>
 nnoremap <leader>plo :silent !feh /tmp/plant.png &<CR>
+
+" ***** Relative numbering *****
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+    set number
+  else
+    set rnu
+  endif
+endfunc
+
+" Toggle between normal and relative numbering.
+nnoremap <leader>r :call NumberToggle()<cr>
+
+nnoremap <leader>zpj !%za "{:style :justified :map {:comma? false}}"<cr>
+
