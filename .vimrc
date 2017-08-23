@@ -158,6 +158,9 @@ command! FormatJSON call FormatJSON()
 " at least opening it in a browser.
 vnoremap <leader>pb <esc>:'<,'>:w !curl -F 'clbin=<-' https://clbin.com<CR>
 
+" ***** vim-clojure-static *****
+let g:clojure_maxlines = 0
+
 " ***** Clojure *****
 command! -nargs=1 C Connect nrepl://localhost:<args>
 nnoremap <leader>eval :%Eval<CR>
