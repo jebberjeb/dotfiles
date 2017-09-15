@@ -53,3 +53,6 @@ ssh-reagent () {
   done
   echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }
+
+# CDPATH
+export CDPATH=~/source/scratch/work-scripts:~/source/scratch
