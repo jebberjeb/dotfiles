@@ -121,7 +121,7 @@ let g:ctrlp_show_hidden = 1
 let g:paredit_mode = 1
 " TODO - define filetypes?
 au FileType edn call PareditInitBuffer()
-au FileType cljc call PareditInitBuffer()
+au BufNewFile,BufRead *.cljc call PareditInitBuffer()
 
 " ***** Colors *****
 "colorscheme vividchalk
