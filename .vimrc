@@ -7,7 +7,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
 "Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'tpope/vim-fireplace'
 Plugin 'emezeske/paredit.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -15,15 +14,17 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
-"Plugin 'jebberjeb/vim-pivotal-tracker'
 Plugin 'jebberjeb/grimoire.vim'
 Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'aklt/plantuml-syntax'
+
+" Clojure plugin graveyard
 "Plugin 'kovisoft/slimv'
-Plugin 'jebberjeb/clojure-socketrepl.nvim'
+"Plugin 'tpope/vim-fireplace'
+"Plugin 'jebberjeb/clojure-socketrepl.nvim'
 call vundle#end()
 
 " ***** Testing Sample Plugin *****
@@ -205,4 +206,34 @@ endfunc
 nnoremap <leader>r :call NumberToggle()<cr>
 
 nnoremap <leader>zpj !%za "{:style :justified :map {:comma? false}}"<cr>
+
+" Support for Lisp REPL Terminal Interaction
+augroup Terminal
+  au!
+  au TermOpen * let g:term_jid = b:terminal_job_id
+augroup END
+
+" Check if the character under the cursor is the start
+" (or end) of something we'd want to send to the REPL.
+function! REPLSendSafe()
+    " Hack to get character under the cursor.
+    norm "ayl
+    if index(["(", ")", "[", "]", "{", "}"], @a) >= 0
+        " Hack to get text using % motion.
+        norm v%"ay
+        call REPLSend(@a)
+    endif
+endfunction
+
+function! REPLSend(cmd)
+    call jobsend(g:term_jid, a:cmd."\n")
+endfunction
+
+" If no visual selection, send safely
+nnoremap <leader>ef :call REPLSendSafe()<cr>
+" If there's a visual selection, just send it
+vnoremap <leader>ef "ay:call REPLSend(@a)<cr>
+" Send the entire buffer
+nnoremap <leader>eb :call REPLSend("(load-file \"".expand('%:p')."\")")<cr>
+nnoremap <leader>doc :call REPLSend("(clojure.repl/doc ".expand("<cword>").")")<cr>
 
