@@ -97,14 +97,6 @@ endfunction
 nnoremap <leader>copy :call ReadyToCopy()<cr>
 nnoremap <leader>nocopy :call NotReadyToCopy()<cr>
 
-" ***** TAGS (ctags, taglist.vim) *****
-let Tlist_WinWidth=40
-let tlist_clojure_settings='lisp;f:function'
-nnoremap tl :TlistToggle<cr>
-nnoremap tn :tn<cr>
-nnoremap tp :tp<cr>
-nnoremap gtl :!/usr/bin/ctags --langmap=lisp:+.clj -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
 " ***** Fugitive *****
 nnoremap gs :Gstatus<cr>
 nnoremap gc :Gcommit<cr>
@@ -237,3 +229,10 @@ vnoremap <leader>ef "ay:call REPLSend(@a)<cr>
 nnoremap <leader>eb :call REPLSend("(load-file \"".expand('%:p')."\")")<cr>
 nnoremap <leader>doc :call REPLSend("(clojure.repl/doc ".expand("<cword>").")")<cr>
 
+" Ctags support for Clojure
+" Strip off the symbol's namespace
+function! SanitizeTag(word)
+  return (split(a:word, '/')[-1])
+endfunction
+
+nnoremap <leader>tt :exe ":tag ".SanitizeTag(expand("<cword>"))<cr>
