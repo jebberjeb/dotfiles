@@ -228,6 +228,7 @@ vnoremap <leader>ef "ay:call REPLSend(@a)<cr>
 " Send the entire buffer
 nnoremap <leader>eb :call REPLSend("(load-file \"".expand('%:p')."\")")<cr>
 nnoremap <leader>doc :call REPLSend("(clojure.repl/doc ".expand("<cword>").")")<cr>
+nnoremap <leader>tb :norm gg,ef<cr>:call REPLSend("(require '[clojure.test]) (clojure.test/run-tests)")<cr>
 
 " Ctags support for Clojure
 " Strip off the symbol's namespace

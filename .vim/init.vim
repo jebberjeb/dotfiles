@@ -1,1 +1,1 @@
-/home/jeb/.vimrc
+/home/ubuntu/.vimrc
