@@ -96,6 +96,11 @@ function! NotReadyToCopy()
 endfunction
 nnoremap <leader>copy :call ReadyToCopy()<cr>
 nnoremap <leader>nocopy :call NotReadyToCopy()<cr>
+" map copy / paste to system clipboard
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <leader>p "+p
 
 " ***** Fugitive *****
 nnoremap gs :Gstatus<cr>
