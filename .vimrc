@@ -204,11 +204,14 @@ nnoremap <leader>r :call NumberToggle()<cr>
 
 nnoremap <leader>zpj !%za "{:style :justified :map {:comma? false}}"<cr>
 
+" Deprecated: no longer using this, in favor of just using the
+" first terminal we can find in the current tab.
+"
 " Support for Lisp REPL Terminal Interaction
-augroup Terminal
-  au!
-  au TermOpen * let g:term_jid = b:terminal_job_id
-augroup END
+"augroup Terminal
+"  au!
+"  au TermOpen * let g:term_jid = b:terminal_job_id
+"augroup END
 
 " Check if the character under the cursor is the start
 " (or end) of something we'd want to send to the REPL.
@@ -222,8 +225,20 @@ function! REPLSendSafe()
     endif
 endfunction
 
+" Returns the job id of the first terminal buffer on the
+" current tab.
+function! FirstTermOfTabJobId()
+    let t_id = nvim_get_current_tabpage()
+    for w_id in nvim_tabpage_list_wins(t_id)
+        let b_id = nvim_win_get_buf(w_id)
+        if nvim_buf_get_option(b_id, 'buftype') == 'terminal'
+            return nvim_buf_get_var(b_id, 'terminal_job_id')
+        endif
+    endfor
+endfunction
+
 function! REPLSend(cmd)
-    call jobsend(g:term_jid, a:cmd."\n")
+    call jobsend(FirstTermOfTabJobId(), a:cmd."\n")
 endfunction
 
 " If no visual selection, send safely
