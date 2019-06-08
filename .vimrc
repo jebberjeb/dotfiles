@@ -79,8 +79,11 @@ nnoremap <leader>slon :set so=100<cr>
 nnoremap <leader>sloff :set so=0<cr>
 
 " ***** Unmap *****
-inoremap <esc> <nop>
-inoremap <c-[> <nop>
+"inoremap <esc> <nop>
+"inoremap <c-[> <nop> "why?
+
+" ***** Terminal *****
+tnoremap <leader>qt <c-\><c-n>
 
 " ***** Copy/paste *****
 function! ReadyToCopy()

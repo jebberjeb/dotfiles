@@ -55,4 +55,4 @@ ssh-reagent () {
 }
 
 # CDPATH
-export CDPATH=~/source/scratch/work-scripts:~/source/scratch
+export CDPATH=.:~/source:~/source/scratch
