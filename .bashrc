@@ -1,5 +1,7 @@
 # .bashrc<cr>
 
+export DISPLAY=:1
+export SOURCE_PATH=$HOME/efs/source
 export HISTSIZE=100000
 export HISTTIMEFORMAT="%y-%m-%d %T "
 
@@ -12,6 +14,7 @@ alias startx="startxfce4"
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
+alias work="cd work-scripts"
 
 function bx() {
     if [[ -z $NICKSERV_PWD ]]; then
@@ -55,4 +58,4 @@ ssh-reagent () {
 }
 
 # CDPATH
-export CDPATH=.:~/source:~/source/scratch
+export CDPATH=.:~/efs/source:~/efs/source/scratch
