@@ -53,8 +53,8 @@ set list
 " ***** .vimrc *****
 " TODO - reuse here
 noremap <leader>dot :vsplit ~/.vimrc<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
-noremap <leader>cheat :vsplit ~/efs/source/scratch/cheatsheet/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
-noremap <leader>log :vsplit ~/efs/source/scratch/logbook/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+noremap <leader>cheat :vsplit ~/ebs/source/scratch/cheatsheet/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
+noremap <leader>log :vsplit ~/ebs/source/scratch/logbook/<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 noremap <leader>todo :split TODO<cr>:set ft=votl<cr>:execute ":nnoremap <buffer> q :w\<lt>cr>:bd\<lt>cr>"<cr>
 
 nnoremap <leader>sdot :source ~/.vimrc<cr>
@@ -189,7 +189,7 @@ nnoremap <leader>lc :lclose<cr>
 
 " ***** PlantUML *****
 "nnoremap <leader><leader>p :w<CR> :silent make<CR>
-nnoremap <leader>pl :w<CR> :!~/efs/source/scripts/plantuml "%:p" -o /tmp/plant.png<CR>
+nnoremap <leader>pl :w<CR> :!~/ebs/source/scripts/plantuml "%:p" -o /tmp/plant.png<CR>
 nnoremap <leader>plo :silent !feh /tmp/plant.png &<CR>
 
 " ***** Relative numbering *****

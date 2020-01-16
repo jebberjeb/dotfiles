@@ -1,7 +1,12 @@
 # .bashrc<cr>
 
+echo "sourcing .bashrc"
+
 export DISPLAY=:1
 export SOURCE_PATH=$HOME/efs/source
+export SCRATCH_DIR=$HOME/efs/source/scratch
+export SCRIPT_DIR=$HOME/efs/source/scripts
+export APP_DIR=$HOME/ebs/source
 export HISTSIZE=100000
 export HISTTIMEFORMAT="%y-%m-%d %T "
 
@@ -58,4 +63,4 @@ ssh-reagent () {
 }
 
 # CDPATH
-export CDPATH=.:~/efs/source:~/efs/source/scratch
+export CDPATH=.:$SOURCE_PATH:$SCRATCH_DIR:$SCRIPT_DIR:$APP_DIR
