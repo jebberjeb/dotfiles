@@ -27,9 +27,6 @@ Plugin 'aklt/plantuml-syntax'
 "Plugin 'jebberjeb/clojure-socketrepl.nvim'
 call vundle#end()
 
-" ***** Testing Sample Plugin *****
-"set runtimepath^=~/.vim/bundle/sample-plugin
-
 " ***** General *****
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
@@ -41,6 +38,11 @@ let maplocalleader = ",,"
 inoremap jk <Esc>
 set statusline=%-.50f\ \ %l/%L\ \ %y
 set ruler
+
+" ***** Ack.vim config *****
+if executable('ag')
+  let g:ackprg = 'ag'
+endif
 
 " ***** Whitespace formatting *****
 set tabstop=4
