@@ -20,6 +20,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'taglist.vim'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'aklt/plantuml-syntax'
+Plugin 'leafgarland/typescript-vim'
 
 " Clojure plugin graveyard
 "Plugin 'kovisoft/slimv'
@@ -38,6 +39,8 @@ let maplocalleader = ",,"
 inoremap jk <Esc>
 set statusline=%-.50f\ \ %l/%L\ \ %y
 set ruler
+autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
 " ***** Ack.vim config *****
 if executable('ag')

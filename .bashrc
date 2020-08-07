@@ -1,14 +1,14 @@
 # .bashrc<cr>
 
-echo "sourcing .bashrc"
-
-export DISPLAY=:1
+export DISPLAY=:10
 export SOURCE_PATH=$HOME/efs/source
 export SCRATCH_DIR=$HOME/efs/source/scratch
 export SCRIPT_DIR=$HOME/efs/source/scripts
 export APP_DIR=$HOME/ebs/source
 export HISTSIZE=100000
 export HISTTIMEFORMAT="%y-%m-%d %T "
+# This should really be in aws config, right?
+export AWS_DEFAULT_REGION=us-east-1
 
 # User specific aliases and functions
 alias ll="ls -aFl"
@@ -65,6 +65,11 @@ ssh-reagent () {
 # CDPATH
 export CDPATH=.:$SOURCE_PATH:$SCRATCH_DIR:$SCRIPT_DIR:$APP_DIR
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# enable bash completion in interactive shells
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
