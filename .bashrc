@@ -1,10 +1,10 @@
 # .bashrc<cr>
 
 export DISPLAY=:10
-export SOURCE_PATH=$HOME/efs/source
-export SCRATCH_DIR=$HOME/efs/source/scratch
-export SCRIPT_DIR=$HOME/efs/source/scripts
-export APP_DIR=$HOME/ebs/source
+export SOURCE_PATH=$HOME/source
+export SCRATCH_DIR=$HOME/source/scratch
+export SCRIPT_DIR=$HOME/source/scripts
+export APP_DIR=$HOME/source
 export HISTSIZE=100000
 export HISTTIMEFORMAT="%y-%m-%d %T "
 # This should really be in aws config, right?
