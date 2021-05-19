@@ -254,7 +254,7 @@ nnoremap <leader>ef :call REPLSendSafe()<cr>
 " If there's a visual selection, just send it
 vnoremap <leader>ef "ay:call REPLSend(@a)<cr>
 " Send the entire buffer
-nnoremap <leader>eb :call REPLSend("(load-file \"".expand('%:p')."\")")<cr>
+nnoremap <leader>eb :call REPLSend("(load \"".split(split(expand('%:p'), 'src')[1], '.clj')[0]."\")")<cr>
 nnoremap <leader>doc :call REPLSend("(clojure.repl/doc ".expand("<cword>").")")<cr>
 nnoremap <leader>tb :norm gg,ef<cr>:call REPLSend("(require '[clojure.test]) (clojure.test/run-tests)")<cr>
 
