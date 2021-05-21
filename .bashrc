@@ -43,7 +43,6 @@ if [ -f ~/.bashrc-path ]; then
     source ~/.bashrc-path
 fi
 
-set -o vi
 export EDITOR=vim
 
 # timezone
