@@ -20,6 +20,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias work="cd work-scripts"
+alias dc="docker-compose"
 
 function bx() {
     if [[ -z $NICKSERV_PWD ]]; then
