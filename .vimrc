@@ -3,6 +3,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'majutsushi/tagbar'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
 "Plugin 'tpope/vim-classpath'
@@ -14,13 +15,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
-Plugin 'jebberjeb/grimoire.vim'
-Plugin 'jebberjeb/eastwood.vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'taglist.vim'
 Plugin 'vimoutliner/vimoutliner'
-Plugin 'aklt/plantuml-syntax'
-Plugin 'leafgarland/typescript-vim'
 
 " Clojure plugin graveyard
 "Plugin 'kovisoft/slimv'
@@ -254,7 +250,9 @@ nnoremap <leader>ef :call REPLSendSafe()<cr>
 " If there's a visual selection, just send it
 vnoremap <leader>ef "ay:call REPLSend(@a)<cr>
 " Send the entire buffer
-nnoremap <leader>eb :call REPLSend("(load \"".split(split(expand('%:p'), 'src')[1], '.clj')[0]."\")")<cr>
+" Commented out - old config w/ docker
+"nnoremap <leader>eb :call REPLSend("(load \"".split(split(expand('%:p'), 'src')[1], '.clj')[0]."\")")<cr>
+nnoremap <leader>eb :call REPLSend("(load-file \"".expand('%:p')."\")")<cr>
 nnoremap <leader>doc :call REPLSend("(clojure.repl/doc ".expand("<cword>").")")<cr>
 nnoremap <leader>tb :norm gg,ef<cr>:call REPLSend("(require '[clojure.test]) (clojure.test/run-tests)")<cr>
 
