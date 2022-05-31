@@ -17,12 +17,19 @@ Plugin 'jebberjeb/vim-clojure-conceal'
 Plugin 'jebberjeb/yet-another-buffer-list'
 Plugin 'mileszs/ack.vim'
 Plugin 'vimoutliner/vimoutliner'
+Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'ruanyl/vim-gh-line'
 
 " Clojure plugin graveyard
 "Plugin 'kovisoft/slimv'
 "Plugin 'tpope/vim-fireplace'
 "Plugin 'jebberjeb/clojure-socketrepl.nvim'
 call vundle#end()
+
+" Need to put this in vim-setup.sh somehow, but for now
+" just dumping it here
+call mkdp#util#install()
 
 " ***** General *****
 filetype plugin indent on
@@ -50,6 +57,7 @@ set expandtab
 set backspace+=indent,eol,start
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
+set textwidth=120
 
 " ***** .vimrc *****
 " TODO - reuse here
@@ -94,7 +102,7 @@ function! ReadyToCopy()
     :set mouse=""
 endfunction
 function! NotReadyToCopy()
-    :set cc=80
+    :set cc=120
     :set number
     :set list
 endfunction
@@ -113,7 +121,7 @@ nnoremap gp :!git push<cr>
 
 " ***** NERDTree *****
 let NERDTreeShowHidden = 1
-nnoremap nt :NERDTree<cr>
+nnoremap <leader>nt :NERDTree<cr>
 
 " ***** Ctrl-P *****
 nnoremap <leader>t :CtrlP<CR>
@@ -126,12 +134,12 @@ au FileType edn call PareditInitBuffer()
 au BufNewFile,BufRead *.cljc call PareditInitBuffer()
 
 " ***** Colors *****
-"colorscheme vividchalk
 let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
+"set background=light
+"colorscheme solarized
+"colorscheme PaperColor
 
-set cc=80
+set cc=120
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 set hls
@@ -254,12 +262,27 @@ vnoremap <leader>ef "ay:call REPLSend(@a)<cr>
 "nnoremap <leader>eb :call REPLSend("(load \"".split(split(expand('%:p'), 'src')[1], '.clj')[0]."\")")<cr>
 nnoremap <leader>eb :call REPLSend("(load-file \"".expand('%:p')."\")")<cr>
 nnoremap <leader>doc :call REPLSend("(clojure.repl/doc ".expand("<cword>").")")<cr>
-nnoremap <leader>tb :norm gg,ef<cr>:call REPLSend("(require '[clojure.test]) (clojure.test/run-tests)")<cr>
+nnoremap <leader>source :call REPLSend("(clojure.repl/source ".expand("<cword>").")")<cr>
+nnoremap <leader>tb :norm gg0,ef<cr>:call REPLSend("(require '[clojure.test]) (clojure.test/run-tests)")<cr>
+nnoremap <leader>ns :norm gg0,ef<cr>
 
 " Ctags support for Clojure
 " Strip off the symbol's namespace
+function! FollowSym(word)
+  execute "normal! gg/".split(a:word, '/')[0]."\<cr>"
+  " TODO if no namespace, just follow the tag
+  " else do the search thing, move to previous [, move
+  " forward a char and go to that (ns) tag
+  " _then_ go to the tag in question, hoping that tag
+  " scope will first search the current file before others
+  " in the tag file
+  "return (split(a:word, '/')[-1])
+endfunction
+
 function! SanitizeTag(word)
   return (split(a:word, '/')[-1])
 endfunction
 
+nnoremap <leader>tx :call FollowSym(expand("<cword>"))<cr>
 nnoremap <leader>tt :exe ":tag ".SanitizeTag(expand("<cword>"))<cr>
+nnoremap <leader>ts :exe ":tselect ".SanitizeTag(expand("<cword>"))<cr>

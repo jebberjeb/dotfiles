@@ -1,1 +1,1 @@
-/home/vm1user/.vimrc
+/Users/jeb.beich/.vimrc

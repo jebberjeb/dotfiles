@@ -1,2 +1,3 @@
 set editing-mode vi
-"\C-x\C-r":re-read-init-file
+set completion-ignore-case on
+set show-all-if-ambiguous on

@@ -65,7 +65,7 @@ ssh-reagent () {
 }
 
 # CDPATH
-export CDPATH=.:$SOURCE_PATH:$SCRATCH_DIR:$SCRIPT_DIR:$APP_DIR
+export CDPATH=.:$SOURCE_PATH:$SCRATCH_DIR:$SCRIPT_DIR:$APP_DIR:$NU_HOME
 
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
@@ -75,3 +75,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+source ~/.zshrc
