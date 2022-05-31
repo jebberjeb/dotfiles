@@ -9,6 +9,7 @@ export HISTSIZE=100000
 export HISTTIMEFORMAT="%y-%m-%d %T "
 # This should really be in aws config, right?
 export AWS_DEFAULT_REGION=us-east-1
+export GPG_TTY=$(tty) # Use GitHub GPG keys to sign commits
 
 # User specific aliases and functions
 alias ll="ls -aFl"
@@ -19,6 +20,7 @@ alias startx="startxfce4"
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
+alias gp="git pull"
 alias work="cd work-scripts"
 alias dc="docker-compose"
 

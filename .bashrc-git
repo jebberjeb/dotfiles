@@ -1,5 +1,10 @@
 #! /bin/bash
 
+# Git autocomplete for mac
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 # Git prompt
 source ~/.git-prompt.sh
 export PS1='[\D{%Y-%m-%d} \t \u@\h \w$(__git_ps1 " (%s)")]\n\$ '

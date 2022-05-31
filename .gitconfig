@@ -1,6 +1,7 @@
 [user]
 	email = jebbeich@gmail.com
 	name = Jeb Beich
+	signingkey = 782D45A8FD8889C4
 [github]
     user = jebberjeb
 [push]
@@ -23,3 +24,5 @@
     # Show files ignored by git:
     ign = ls-files -o -i --exclude-standard
     fpl = push --force-with-lease
+[commit]
+	gpgsign = true

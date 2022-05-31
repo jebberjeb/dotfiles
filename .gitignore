@@ -4,3 +4,6 @@
 .vim/bundle/
 .vim/filetype.vim
 .vim/vimoutliner/
+target
+tags
+.cpcache
